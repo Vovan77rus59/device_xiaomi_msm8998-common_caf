@@ -239,7 +239,6 @@ VENDOR_SECURITY_PATCH := 2018-10-01
 
 # SELinux
 BOARD_SEPOLICY_VERS := 28.0
-include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
 
 # Treble
