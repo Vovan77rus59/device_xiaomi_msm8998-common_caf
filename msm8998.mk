@@ -160,9 +160,11 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-impl:64 \
     android.hardware.graphics.allocator@2.0-service \
     android.hardware.graphics.mapper@2.0-impl \
+    android.hardware.graphics.mapper@2.0-service \
     android.hardware.memtrack@1.0-impl:64 \
     android.hardware.memtrack@1.0-service \
-    android.hardware.renderscript@1.0-impl:64
+    android.hardware.renderscript@1.0-impl:64 \
+    android.hardware.renderscript@1.0-service
 
 # DRM
 PRODUCT_PACKAGES += \
