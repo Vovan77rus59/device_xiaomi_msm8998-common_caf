@@ -135,7 +135,7 @@ public class IFAAManagerImpl extends IFAAManagerV3 {
     }
 
     public int getSupportBIOTypes(Context context) {
-        int ifaaType = SystemProperties.getInt("persist.sys.ifaa", 0);
+        int ifaaType = SystemProperties.getInt("persist.vendor.sys.pay.ifaa", 0);
         String fpVendor = SystemProperties.get("persist.sys.fp.vendor", "");
         int supportBIOTypes = "none".equalsIgnoreCase(fpVendor) ? ifaaType & IFAA_TYPE_IRIS :
                 ifaaType & (IFAA_TYPE_FINGER | IFAA_TYPE_IRIS);
