@@ -32,7 +32,7 @@
 #include <unistd.h>
 
 const int MAC_SIZE = 6;
-const char WLAN_MAC_FILE[] = "/mnt/vendor/persist/wlan_mac.bin";
+const char WLAN_MAC_FILE[] = "/data/vendor/mac_addr/wlan_mac.bin";
 const char BT_MAC_FILE[] = "/data/vendor/mac_addr/bt.mac";
 
 const char LIB_QMINVAPI[] = "libqminvapi.so";
