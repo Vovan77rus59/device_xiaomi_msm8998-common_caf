@@ -18,7 +18,11 @@
 #define LOG_TAG "xiaomi_readmac"
 #define LOG_NDEBUG 0
 
+#include <cutils/properties.h>
 #include <log/log.h>
+#include <private/android_filesystem_config.h>
+
+#include <sys/stat.h>
 
 #include <dlfcn.h>
 #include <stdlib.h>
@@ -29,6 +33,7 @@
 
 const int MAC_SIZE = 6;
 const char WLAN_MAC_FILE[] = "/mnt/vendor/persist/wlan_mac.bin";
+const char BT_MAC_FILE[] = "/data/vendor/mac_addr/bt.mac";
 
 const char LIB_QMINVAPI[] = "libqminvapi.so";
 
@@ -140,8 +145,54 @@ static void set_wlan_mac_with(qmi_nv_read_mac_t qmi_nv_read_wlan_mac) {
     }
 }
 
+static int is_valid_bt_mac_file() {
+    FILE *fp;
+
+    fp = fopen(BT_MAC_FILE, "r");
+    if (fp == NULL)
+        return 0;
+
+    fclose(fp);
+
+    return 1;
+}
+
+static int write_bt_mac_file(uint8_t bt_mac[]) {
+    FILE *fp;
+
+    fp = fopen(BT_MAC_FILE, "wb");
+    if (fp == NULL)
+        return -1;
+
+    fwrite(bt_mac, MAC_SIZE, 1, fp);
+
+    fclose(fp);
+
+    chown(BT_MAC_FILE, AID_SYSTEM, AID_SYSTEM);
+    chmod(BT_MAC_FILE, 0644);
+
+    return 0;
+}
+
+static void set_bt_mac_with(qmi_nv_read_mac_t qmi_nv_read_bd_addr) {
+    uint8_t bt_mac[MAC_SIZE];
+    int rc;
+
+    if (is_valid_bt_mac_file()) {
+        return;
+    }
+
+    load_mac_with(bt_mac, qmi_nv_read_bd_addr);
+
+    rc = write_bt_mac_file(bt_mac);
+    if (rc) {
+        ALOGE("failed to write %s", BT_MAC_FILE);
+    }
+}
+
 int main() {
     qmi_nv_read_mac_t qmi_nv_read_wlan_mac = NULL;
+    qmi_nv_read_mac_t qmi_nv_read_bd_addr = NULL;
     void *handle;
 
     handle = dlopen(LIB_QMINVAPI, RTLD_NOW);
@@ -152,9 +203,12 @@ int main() {
 
     qmi_nv_read_wlan_mac =
         (qmi_nv_read_mac_t)dlsym(handle, "qmi_nv_read_wlan_mac");
+    qmi_nv_read_bd_addr =
+        (qmi_nv_read_mac_t)dlsym(handle, "qmi_nv_read_bd_addr");
 
 set_macs:
     set_wlan_mac_with(qmi_nv_read_wlan_mac);
+    set_bt_mac_with(qmi_nv_read_bd_addr);
 
     if (handle)
         dlclose(handle);
