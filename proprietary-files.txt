@@ -53,16 +53,41 @@ vendor/lib64/libbtnv.so
 # Bluetooth ANT
 lib64/com.qualcomm.qti.ant@1.0.so:vendor/lib64/com.qualcomm.qti.ant@1.0.so
 
+# Bluetooth aptX - from taimen PQ1A.190105.004
+lib64/libaptX_encoder.so|0cebad28afcf29f931bdc2d24fce2730dc882ecf
+lib64/libaptXHD_encoder.so|90f47f10af28b3ead143200cb4370b847c513127
+
 # Bluetooth FM
 lib64/vendor.qti.hardware.fm@1.0.so:vendor/lib64/vendor.qti.hardware.fm@1.0.so
 
 # Camera
-vendor/lib/hw/camera.msm8998.so|67c134de06377d1fb4793c83cb4f783d63b4426b
-vendor/lib/libMiCameraHal.so|836daf4c82232ebb97556ff073b05e2038017785
-vendor/lib/libicuuc-v27.so|ee9bec9a01e97180c5262dcd5da8486e1f7944ab
-vendor/lib/libminikin-v27.so|3831e60a14f071bb0f16496e82841a672b0f8215
-vendor/lib/libmmcamera2_sensor_modules.so|25816cb8da7910bf388572ea65e2bb7615d0f693
-vendor/lib/libskia.so|767027b1114dc875394e0541b7f50c80e75ab9ec
+lib/libMiCameraHal.so:vendor/lib/libMiCameraHal.so
+lib/libicuuc.so:vendor/lib/libicuuc-v27.so
+lib/libminikin.so:vendor/lib/libminikin-v27.so
+lib/libskia.so:vendor/lib/libskia.so
+lib/libtrueportrait.so:vendor/lib/libtrueportrait.so
+lib64/libblurbuster.so
+lib64/libclearsight.so
+lib64/libhazebuster.so
+lib64/libfiltergenerator.so
+lib64/libjni_blurbuster.so
+lib64/libjni_chromaflash.so
+lib64/libjni_clearsight.so
+lib64/libjni_dualcamera.so
+lib64/libjni_filtergenerator.so
+lib64/libjni_hazebuster.so
+lib64/libjni_makeupV2.so
+lib64/libjni_optizoom.so
+lib64/libjni_seestraight.so
+lib64/libjni_sharpshooter.so
+lib64/libjni_stillmore.so
+lib64/libjni_trueportrait.so
+lib64/libjni_truescanner_v2.so
+lib64/libjni_ubifocus.so
+lib64/libseestraight.so
+lib64/libtrueportrait.so
+lib64/libtruescanner.so
+vendor/lib/hw/camera.msm8998.so
 vendor/lib/lib_lowlight.so
 vendor/lib/lib_lowlight_dxo.so
 vendor/lib/libarcsoft_beauty_shot.so
@@ -72,9 +97,9 @@ vendor/lib/libarcsoft_beautyshot_video_algorithm.so
 vendor/lib/libarcsoft_dualcam_optical_zoom.so
 vendor/lib/libarcsoft_dualcam_optical_zoom_control.so
 vendor/lib/libarcsoft_dualcam_refocus.so
+vendor/lib/libchromaflash.so
 vendor/lib/libFaceGrade.so
 vendor/lib/libflash_pmic.so
-vendor/lib/libhal_dbg.so
 vendor/lib/libjpegdhw.so
 vendor/lib/libjpegdmahw.so
 vendor/lib/libjpegehw.so
@@ -92,6 +117,7 @@ vendor/lib/libmmcamera2_mct_shimlayer.so
 vendor/lib/libmmcamera2_pp_buf_mgr.so
 vendor/lib/libmmcamera2_pproc_modules.so
 vendor/lib/libmmcamera2_q3a_core.so
+vendor/lib/libmmcamera2_sensor_modules.so
 vendor/lib/libmmcamera2_stats_algorithm.so
 vendor/lib/libmmcamera2_stats_lib.so
 vendor/lib/libmmcamera2_stats_modules.so
@@ -112,6 +138,7 @@ vendor/lib/libmmcamera_hvx_add_constant.so
 vendor/lib/libmmcamera_hvx_grid_sum.so
 vendor/lib/libmmcamera_imglib.so
 vendor/lib/libmmcamera_imglib_faceproc_adspstub.so
+vendor/lib/libmmcamera_imglib_faceproc_adspstub2.so
 vendor/lib/libmmcamera_interface.so
 vendor/lib/libmmcamera_llvd.so
 vendor/lib/libmmcamera_optizoom_lib.so
@@ -121,6 +148,7 @@ vendor/lib/libmmcamera_pdafcamif.so
 vendor/lib/libmmcamera_ppbase_module.so
 vendor/lib/libmmcamera_ppeiscore.so
 vendor/lib/libmmcamera_quadracfa.so
+vendor/lib/libmmcamera_sac_lib.so
 vendor/lib/libmmcamera_stillmore_lib.so
 vendor/lib/libmmcamera_sw2d_lib.so
 vendor/lib/libmmcamera_thread_services.so
@@ -131,18 +159,26 @@ vendor/lib/libmmcamera_tuning.so
 vendor/lib/libmmcamera_tuning_lookup.so
 vendor/lib/libmmjpeg.so
 vendor/lib/libmmjpeg_interface.so
-vendor/lib/libmmlib2d_interface.so
 vendor/lib/libmmqjpeg_codec.so
 vendor/lib/libmmqjpegdma.so
 vendor/lib/libmorpho_easy_hdr.so
 vendor/lib/libmorpho_hdr_checker.so
 vendor/lib/libmpbase.so
+vendor/lib/liboptizoom.so
 vendor/lib/libqomx_core.so
 vendor/lib/libqomx_jpegdec.so
 vendor/lib/libqomx_jpegenc.so
 vendor/lib/libqomx_jpegenc_pipe.so
 vendor/lib/libremosaic_daemon.so
+vendor/lib/libsac.so
+vendor/lib/libseemore.so
 vendor/lib/libXMFD_AgeGender.so
+vendor/lib64/libchromaflash.so
+vendor/lib64/libdualcameraddm.so
+vendor/lib64/liboptizoom.so
+vendor/lib64/libseemore.so
+vendor/lib64/libts_face_beautify_hal.so
+vendor/lib64/libubifocus.so
 
 # Camera eeprom
 vendor/lib/libSonyIMX386PdafLibrary.so

@@ -67,6 +67,16 @@ function blob_fixup() {
         ;;
     vendor/lib/libMiCameraHal.so)
         sed -i 's|system/etc/dualcamera.png|vendor/etc/dualcamera.png|g' "${2}"
+        patchelf --replace-needed "libicuuc.so" "libicuuc-v27.so" "${2}"
+        ;;
+    vendor/lib/hw/camera.msm8998.so)
+        patchelf --replace-needed "libminikin.so" "libminikin-v27.so" "${2}"
+        ;;
+    vendor/lib/libicuuc-v27.so)
+        patchelf --set-soname "libicuuc-v27.so" "${2}"
+        ;;
+    vendor/lib/libminikin-v27.so)
+        patchelf --set-soname "libminikin-v27.so" "${2}"
         ;;
     vendor/lib/libmmcamera2_sensor_modules.so)
         sed -i "s|/system/etc/camera/|/vendor/etc/camera/|g" "${2}"
@@ -88,6 +98,9 @@ function blob_fixup() {
         ;;
     vendor/lib/soundfx/libdirac.so)
         patchelf --remove-needed "libmedia.so" "${2}"
+        ;;
+    vendor/etc/init/com.qualcomm.qti.wifidisplayhal@1.0-service.rc)
+        sed -i "/ disabled/Q" "${2}"
         ;;
     vendor/bin/mlipayd@1.1)
         patchelf --remove-needed "libandroid_runtime.so" "${2}"
